@@ -24,7 +24,8 @@ spec:
       containers:
       - name: mysql
         image: joindevops/percona:v1.0
-        command: [--ignore-db-dir=lost+found]
+        args:
+        - "--ignore-db-dir=lost+found"
         env:
         - name: CLUSTER_NAME
           value: mysql

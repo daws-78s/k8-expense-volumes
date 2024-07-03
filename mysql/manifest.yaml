@@ -24,7 +24,7 @@ spec:
       containers:
       - name: mysql
         image: joindevops/percona:v1.0
-        imagePullPolicy: always
+        imagePullPolicy: Always
         args:
         - "--ignore-db-dir=lost+found"
         env:

@@ -11,7 +11,7 @@ spec:
       component: mysql
       project: expense
       tier: db 
-  serviceName: "nginx"
+  serviceName: "mysql-headless"
   replicas: 3 # by default is 1
   template:
     metadata:
@@ -23,7 +23,12 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: joindevops/mysql:v1.0
+        image: joindevops/percona:v1.0
+        env:
+        - name: CLUSTER_NAME
+          value: mysql
+        - name: XTRABACKUP_PASSWORD
+          value: backup_password
         ports:
         - containerPort: 80
           name: web
